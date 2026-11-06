@@ -82,57 +82,40 @@ export class EmailService {
       ? { 'List-Unsubscribe': `<${settingsUrl}>` }
       : undefined;
 
+    const brandName = process.env.EMAIL_FROM_NAME || 'Mamito';
+    const siteUrl = process.env.FRONTEND_URL || 'https://mamito.fidellab.com';
     const modifiedHtml = `
-    <div style="
-        background: linear-gradient(to bottom right, #e6f2ff, #f0e6ff);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-    ">
-        <div style="
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(4px);
-            border-radius: 0.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            max-width: 48rem;
-            width: 100%;
-            padding: 2rem;
-        ">
-            <h1 style="
-                font-size: 1.875rem;
-                font-weight: bold;
-                margin-bottom: 1.5rem;
-                text-align: left;
-                color: #1f2937;
-            ">${subject}</h1>
-            
-            <div style="
-                margin-bottom: 2rem;
-                color: #374151;
-            ">
-                ${html}
+    <div style="background:#fff5ee;padding:32px 16px;font-family:'Helvetica Neue',Arial,sans-serif;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(255,106,43,0.12);">
+        <tr>
+          <td style="height:6px;background:linear-gradient(90deg,#ff8a0b,#ff5b51);background-color:#ff6a2b;font-size:0;line-height:0;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="padding:28px 32px 0 32px;">
+            <a href="${siteUrl}" style="text-decoration:none;display:inline-block;">
+              <img src="${siteUrl}/android-chrome-192x192.png" width="40" height="40" alt="${brandName}" style="vertical-align:middle;border:0;" />
+              <span style="vertical-align:middle;font-size:20px;font-weight:700;color:#1f2430;margin-left:8px;">${brandName}</span>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:24px 32px 8px 32px;">
+            <h1 style="font-size:24px;line-height:1.3;font-weight:700;margin:0 0 16px 0;color:#1f2430;">${subject}</h1>
+            <div style="font-size:15px;line-height:1.6;color:#3f4654;">
+              ${html}
             </div>
-            
-            <div style="
-                display: flex;
-                align-items: center;
-                border-top: 1px solid #e5e7eb;
-                padding-top: 1.5rem;
-            ">
-                <div>
-                    <h2 style="
-                        font-size: 1.25rem;
-                        font-weight: 600;
-                        color: #1f2937;
-                        margin: 0;
-                    ">${process.env.EMAIL_FROM_NAME}</h2>
-                    <div style="font-size: 12px">
-                      You can change your notification preferences in your <a href="${settingsUrl}">account settings.</a>
-                     </div>
-                </div>
-            </div>
-        </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:24px 32px 28px 32px;border-top:1px solid #f1e6de;font-size:12px;line-height:1.6;color:#8a8f99;">
+            You can change your notification preferences in your <a href="${settingsUrl}" style="color:#e8561a;">account settings</a>.<br />
+            ${brandName} by FidelLab &middot; Bole, Addis Ababa, Ethiopia &middot;
+            <a href="${siteUrl}/terms" style="color:#8a8f99;">Terms</a> &middot;
+            <a href="${siteUrl}/privacy" style="color:#8a8f99;">Privacy</a> &middot;
+            <a href="mailto:support@fidellab.com" style="color:#8a8f99;">support@fidellab.com</a>
+          </td>
+        </tr>
+      </table>
     </div>
     `;
 

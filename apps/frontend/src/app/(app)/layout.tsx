@@ -23,6 +23,49 @@ import {
 import { HtmlComponent } from '@gitroom/frontend/components/layout/html.component';
 import Script from 'next/script';
 import { ChangeDirClient } from '@gitroom/frontend/components/new-layout/change.dir.client';
+import type { Metadata, Viewport } from 'next';
+
+const siteUrl = process.env.FRONTEND_URL || 'https://mamito.fidellab.com';
+const siteDescription =
+  'Mamito by FidelLab - schedule, publish and analyze your social media posts across TikTok, Instagram, Facebook, LinkedIn, YouTube and more.';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: { default: 'Mamito', template: '%s' },
+  description: siteDescription,
+  applicationName: 'Mamito',
+  authors: [{ name: 'FidelLab' }],
+  creator: 'FidelLab',
+  publisher: 'FidelLab',
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  appleWebApp: { title: 'Mamito', capable: true, statusBarStyle: 'default' },
+  openGraph: {
+    type: 'website',
+    siteName: 'Mamito',
+    title: 'Mamito - Social media scheduling by FidelLab',
+    description: siteDescription,
+    url: siteUrl,
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Mamito' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mamito - Social media scheduling by FidelLab',
+    description: siteDescription,
+    images: ['/og-image.png'],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#ff6a2b',
+};
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const cookieStore = await cookies();
@@ -33,11 +76,10 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         {!!process.env.DATAFAST_WEBSITE_ID && (
           <Script
             data-website-id={process.env.DATAFAST_WEBSITE_ID}
-            data-domain="postiz.com"
+            data-domain={new URL(siteUrl).hostname}
             src="https://datafa.st/js/script.js"
             strategy="afterInteractive"
           />
@@ -101,7 +143,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
             <FacebookComponent />
             <GoogleTagManagerComponent gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
             <Plausible
-              domain={!!process.env.IS_GENERAL ? 'postiz.com' : 'gitroom.com'}
+              domain={new URL(siteUrl).hostname}
             >
               <LayoutContext>
                 <UtmSaver />

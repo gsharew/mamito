@@ -228,7 +228,7 @@ const OnboardingStep1: FC<{ onNext: () => void; onSkip: () => void }> = ({
       <div className="flex justify-end pt-[24px] mt-[8px]">
         <button
           onClick={onNext}
-          className="group flex items-center gap-[12px] bg-gradient-to-r from-[#622aff] to-[#8b5cf6] hover:from-[#7c3aff] hover:to-[#9d6eff] text-white font-semibold px-[32px] py-[14px] rounded-[12px] text-[16px] transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
+          className="group flex items-center gap-[12px] bg-gradient-to-r from-[#ee5a1c] to-[#ff8a3d] hover:from-[#ff7a33] hover:to-[#ff8a3d] text-white font-semibold px-[32px] py-[14px] rounded-[12px] text-[16px] transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
         >
           {sortedIntegrations.length > 0
             ? t('continue', 'Continue')
@@ -295,7 +295,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
   const apiKey = user?.publicApi || '';
   const available = !!apiKey && !!user?.tier?.public_api;
   // the official connectors work for self-hosted installs too
-  const officialConnectors = billingEnabled || isSelfHosted;
+  const officialConnectors = false && (billingEnabled || isSelfHosted);
 
   const { config, hint } =
     agent === apiTab
@@ -391,14 +391,6 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
             )}
           </div>
         </div>
-        <a
-          className="cursor-pointer px-[24px] h-[44px] bg-[#612BD3] hover:bg-[#5520CB] text-white transition-colors rounded-[8px] text-[14px] font-[600] flex items-center gap-[8px] shrink-0"
-          href="https://docs.postiz.com/public-api/introduction"
-          target="_blank"
-        >
-          <McpClientIcon client={apiTab} size={18} />
-          {t('read_the_api_docs', 'Read the API docs')}
-        </a>
       </div>
       <div className="bg-newBgColorInnerInner rounded-[12px] border border-newBorder overflow-hidden">
         <div className="bg-newBgColorInner px-[20px] py-[14px] border-b border-newBorder">
@@ -451,7 +443,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
         </div>
       </div>
       <a
-        className="cursor-pointer px-[24px] h-[44px] bg-[#612BD3] hover:bg-[#5520CB] text-white transition-colors rounded-[8px] text-[14px] font-[600] flex items-center gap-[8px] shrink-0"
+        className="cursor-pointer px-[24px] h-[44px] bg-[#EE5A1C] hover:bg-[#D94A10] text-white transition-colors rounded-[8px] text-[14px] font-[600] flex items-center gap-[8px] shrink-0"
         href={connector.href}
         target="_blank"
       >
@@ -485,7 +477,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
                 className={clsx(
                   'cursor-pointer px-[14px] h-[36px] text-[13px] font-[500] rounded-[8px] transition-colors',
                   auth === m
-                    ? 'bg-[#612BD3] text-white'
+                    ? 'bg-[#EE5A1C] text-white'
                     : 'bg-btnSimple text-customColor18 hover:bg-boxHover hover:text-textColor'
                 )}
                 onClick={() => setAuth(m)}
@@ -575,9 +567,9 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
                 className={clsx(
                   'cursor-pointer px-[14px] h-[36px] text-[13px] font-[500] rounded-[8px] transition-colors flex items-center gap-[8px]',
                   tab === item
-                    ? 'bg-[#612BD3] text-white'
+                    ? 'bg-[#EE5A1C] text-white'
                     : item === apiTab
-                    ? 'bg-btnSimple text-[#a78bfa] hover:bg-boxHover hover:text-[#c4b5fd]'
+                    ? 'bg-btnSimple text-[#ffa45c] hover:bg-boxHover hover:text-[#ffc49a]'
                     : 'bg-btnSimple text-customColor18 hover:bg-boxHover hover:text-textColor'
                 )}
                 onClick={() => setTab(item)}
@@ -596,7 +588,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
                   className={clsx(
                     'cursor-pointer px-[12px] h-[32px] text-[12px] font-[500] rounded-[8px] transition-colors flex items-center gap-[6px]',
                     otherAgent === item
-                      ? 'bg-[#612BD3] text-white'
+                      ? 'bg-[#EE5A1C] text-white'
                       : 'bg-btnSimple text-customColor18 hover:bg-boxHover hover:text-textColor'
                   )}
                   onClick={() => setOtherAgent(item)}
@@ -618,10 +610,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
           ) : (
             <>
               {connectorSection}
-              <div className="grid grid-cols-2 gap-[16px]">
-                {mcpSection}
-                {cliSection}
-              </div>
+              {mcpSection}
             </>
           )}
         </div>
@@ -665,7 +654,7 @@ const OnboardingStep2: FC<{ onBack: () => void; onNext: () => void }> = ({
         </div>
         <button
           onClick={onNext}
-          className="group flex items-center gap-[12px] bg-gradient-to-r from-[#622aff] to-[#8b5cf6] hover:from-[#7c3aff] hover:to-[#9d6eff] text-white font-semibold px-[32px] py-[14px] rounded-[12px] text-[16px] transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
+          className="group flex items-center gap-[12px] bg-gradient-to-r from-[#ee5a1c] to-[#ff8a3d] hover:from-[#ff7a33] hover:to-[#ff8a3d] text-white font-semibold px-[32px] py-[14px] rounded-[12px] text-[16px] transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
         >
           {t('continue_skip', 'Continue / Skip')}
           <svg

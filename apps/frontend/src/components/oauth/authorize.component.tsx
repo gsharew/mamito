@@ -113,8 +113,8 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
     return (
       <div className="flex flex-1 items-center justify-center text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#612BD3] rounded-full blur-[120px]" />
-          <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FC69FF] rounded-full blur-[120px]" />
+          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#EE5A1C] rounded-full blur-[120px]" />
+          <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FF8A3D] rounded-full blur-[120px]" />
         </div>
         <div className="relative z-10 text-center">
           <div className="flex justify-center mb-[24px]">
@@ -124,7 +124,7 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
             Please wait...
           </div>
           <div className="mt-[32px] flex justify-center">
-            <div className="w-[48px] h-[48px] border-[3px] border-[#612BD3] border-t-transparent rounded-full animate-spin" />
+            <div className="w-[48px] h-[48px] border-[3px] border-[#EE5A1C] border-t-transparent rounded-full animate-spin" />
           </div>
         </div>
       </div>
@@ -135,8 +135,8 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
     return (
       <div className="flex flex-1 items-center justify-center text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#612BD3] rounded-full blur-[120px]" />
-          <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FC69FF] rounded-full blur-[120px]" />
+          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#EE5A1C] rounded-full blur-[120px]" />
+          <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FF8A3D] rounded-full blur-[120px]" />
         </div>
         <div className="relative z-10 text-center">
           <div className="flex justify-center mb-[24px]">
@@ -173,8 +173,8 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
   return (
     <div className="flex flex-1 items-center justify-center text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#612BD3] rounded-full blur-[120px]" />
-        <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FC69FF] rounded-full blur-[120px]" />
+        <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#EE5A1C] rounded-full blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-[#FF8A3D] rounded-full blur-[120px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-[500px] mx-auto px-[20px]">
@@ -182,7 +182,7 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
           <Logo />
         </div>
 
-        <div className="bg-[#1A1919] rounded-[16px] p-[32px] flex flex-col gap-[24px]">
+        <div className="bg-[#1c1f27] rounded-[16px] p-[32px] flex flex-col gap-[24px]">
           <div className="flex flex-col items-center gap-[16px]">
             {appInfo.app.picture?.path ? (
               <img
@@ -238,7 +238,7 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
                   <button
                     onClick={() => handleAction('approve')}
                     disabled={submitting}
-                    className="flex-1 bg-[#612BD3] hover:bg-[#7B3FF2] disabled:opacity-50 text-white rounded-[8px] py-[10px] px-[16px] text-[14px] font-semibold transition-colors"
+                    className="flex-1 bg-[#EE5A1C] hover:bg-[#FF6F2E] disabled:opacity-50 text-white rounded-[8px] py-[10px] px-[16px] text-[14px] font-semibold transition-colors"
                   >
                     Authorize
                   </button>
@@ -253,7 +253,7 @@ export const OAuthAuthorize: FC<{ logged: boolean }> = ({ logged }) => {
               ) : (
                 <button
                   onClick={signIn}
-                  className="bg-[#612BD3] hover:bg-[#7B3FF2] text-white rounded-[8px] py-[10px] px-[16px] text-[14px] font-semibold transition-colors"
+                  className="bg-[#EE5A1C] hover:bg-[#FF6F2E] text-white rounded-[8px] py-[10px] px-[16px] text-[14px] font-semibold transition-colors"
                 >
                   Sign in to Mamito
                 </button>

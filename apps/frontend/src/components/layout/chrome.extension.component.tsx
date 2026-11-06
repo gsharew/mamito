@@ -1,7 +1,8 @@
 import { useVariables } from '@gitroom/react/helpers/variable.context';
 export const ChromeExtensionComponent = () => {
+  // Mamito has no browser extension of its own; the upstream one is hidden.
   const { billingEnabled } = useVariables();
-  if (!billingEnabled) {
+  if (!billingEnabled || true) {
     return null;
   }
   return (

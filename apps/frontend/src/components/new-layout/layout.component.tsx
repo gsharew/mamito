@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
 import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useT } from '@gitroom/react/translation/get.transation.service.client';
 import { usePathname, useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import { CheckPayment } from '@gitroom/frontend/components/layout/check.payment';
@@ -50,6 +51,7 @@ export const LayoutComponent = ({ children }: { children: ReactNode }) => {
   const fetch = useFetch();
 
   const { backendUrl, billingEnabled, isGeneral } = useVariables();
+  const t = useT();
 
   // Feedback icon component attaches Sentry feedback to a top-bar icon when DSN is present
   const searchParams = useSearchParams();
@@ -192,6 +194,22 @@ export const LayoutComponent = ({ children }: { children: ReactNode }) => {
                       </div>
                     </div>
                   </div>
+                  <footer className="mamito-footer flex flex-wrap items-center justify-between gap-[8px] px-[8px] pt-[10px] text-[12px] text-textItemBlur mobile:justify-center">
+                    <div>
+                      &copy; {new Date().getFullYear()} Mamito by FidelLab
+                    </div>
+                    <div className="flex items-center gap-[14px]">
+                      <a href="/terms" target="_blank" rel="noopener">
+                        {t('terms_of_service', 'Terms of Service')}
+                      </a>
+                      <a href="/privacy" target="_blank" rel="noopener">
+                        {t('privacy_policy', 'Privacy Policy')}
+                      </a>
+                      <a href="mailto:support@fidellab.com">
+                        {t('support', 'Support')}
+                      </a>
+                    </div>
+                  </footer>
                 </>
               )}
             </div>

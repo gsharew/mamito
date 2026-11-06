@@ -826,6 +826,10 @@ export class IntegrationRepository {
       },
       data: {
         deletedAt: new Date(),
+        // Mamito: a deleted channel can never be reused (reconnecting creates
+        // a new row), so drop its platform credentials right away.
+        token: '',
+        refreshToken: null,
       },
     });
   }
