@@ -411,6 +411,18 @@ export class InstagramProvider
       };
     }
 
+    // Mamito: Instagram intermittently answers with a generic internal error
+    // (code -1) that succeeds on a later attempt, so retry instead of failing.
+    if (
+      body.indexOf('Generic Internal Error') > -1 ||
+      body.indexOf('"code":-1') > -1
+    ) {
+      return {
+        type: 'retry' as const,
+        value: 'Instagram transient internal error, retrying publish...',
+      };
+    }
+
     if (body.indexOf('2207077') > -1) {
       return {
         type: 'bad-body' as const,
